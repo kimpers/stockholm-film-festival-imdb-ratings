@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  Get ratings and IMDB info for all movies for the Stockholm Film Festival
 // @author       https://github.com/kimpers
-// @match        https://www.stockholmfilmfestival.se/*/program/*/festival
+// @match        https://www.stockholmfilmfestival.se/*/movies/*/festival
 // @grant        none
 // ==/UserScript==
 
@@ -15,7 +15,7 @@
   const apiKey = "INSERT_VALID_API_KEY_HERE";
 
   const getRatings = async () => {
-    const elements = document.querySelectorAll("div.name");
+    const elements = document.querySelectorAll("div.film-title");
 
     for (const el of elements) {
       const name = el.innerText.trim();
@@ -43,7 +43,6 @@
   getRatingsButton.onclick = getRatings;
   getRatingsButton.style = "color: #000; margin-bottom: 10px";
 
-  const programList = document.getElementById("program-list");
+  const programList = document.getElementById("movies-list");
   programList.insertAdjacentElement("beforebegin", getRatingsButton);
 })();
-
